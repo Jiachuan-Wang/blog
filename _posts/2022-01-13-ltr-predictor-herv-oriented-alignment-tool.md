@@ -18,7 +18,7 @@ pin: false
 
 ### Introduction
 The human genome is rich in retroviruses and retroviral elements integrated during the evolutionary process[^f1]. Among human endogenous retroviruses (HERVs), HERV-K is the most transcriptionally active group[^f1]. It plays a vital role in embryogenesis, whereas closely related to cancer and neurodegenerative diseases[^f2][^f3][^f4].  (Grow et al., 2015, Li et al., 2015, Argaw-Denboba et al., 2017). HERVs are repeats with low complexity, making it hard to perform annotation and analysis geared to the genome[^f5]. Algorithms like cross_match and WindowMasker used to find repeats masked a large quantity of the annotated exons [^f5]. Here, we have developed a basic local alignment search tool (BLAST)-like algorithm named the LTR predictor, which can perform fast alignment of repeats while supporting custom input of reference sequences. Our test on LTR5_Hs (a type of HERV-K) shows that the LTR predictor has good accuracy and running speed, and can provide inspiration for predicting the genome coordinates of repeat such as HERV.
-The HERV consensus sequences (DF0000471, DF0000472, and DF0000558) were downloaded from Dfam database (<https://dfam.org/home>). Soft-masked reference sequences of human genome (GRCh38 Genome Reference Consortium Human Reference 38, or hg38) were from UCSC Genome browser (<http://genome.ucsc.edu/>).
+The HERV consensus sequences (DF0000471, DF0000472, and DF0000558) were downloaded from Dfam database (<https://dfam.org/home>). Soft-masked reference sequences of human genome (GRCh38 Genome Reference Consortium Human Reference 38, or hg38) were from UCSC Genome browser (<https://genome.ucsc.edu/>).
 
 ### Source code
 <https://github.com/Haoninghui/BMI3_Project1>
