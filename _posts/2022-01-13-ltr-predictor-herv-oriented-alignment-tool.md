@@ -1,5 +1,5 @@
 ---
-title: 'LTR Predictor: HERV-oriented Alignment Tool'
+title: 'LTR predictor: HERV-oriented alignment tool'
 date: 2022-01-13
 categories: [Projects, Genetics]
 description: A BLAST-like algorithm, which can perform fast alignment of repeats while supporting custom input of reference sequences.
@@ -7,10 +7,10 @@ tags: [Python,Bioinformatics,Genetics,Algorithm,Sequence alignment]
 pin: false
 ---
 
-> This was an undergraduate course assignment and now I am no longer working on genetics. Also, the realization might be naive.
+> This was an undergraduate course assignment and now I am no longer working on genetics.
 {: .prompt-warning }
 
-> But it was the **top-5 mini-projects** of Biomedical Informatics 3 (BMI3) coursework. <https://labw.org/bmi3-2021/miniprojects>.
+> The project was selected as the **top-5 mini-projects** of Biomedical Informatics 3 (BMI3) coursework. <https://labw.org/bmi3-2021/miniprojects>.
 {: .prompt-info }
 
 
