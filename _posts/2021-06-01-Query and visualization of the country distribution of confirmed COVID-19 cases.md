@@ -13,14 +13,14 @@ The COVID-19 epidemic is closely related to everyone's life. Faced with the mass
 ### Software Design
 The software adopts a direct operation user interface and is made based on the pygame and pyecharts packages of Python programming language. Users can run the software via different applications, such as command prompt, then open a simple initial interface, which provides a line of prompts and a button that is designed to be clicked to enter the date specified by the user. Type in a regulated date (in the form of Year-Month-Day) and press Enter, then the interface will return the country with the largest number of cumulative confirmed cases till that day and the corresponding number. Besides, the software will generate an HTML file containing a world map (an example shown in Fig. 1), intuitively showing COVID-19 situation of the day in some key countries (China, US, United Kingdom, Italy, France, Germany, Spain, and Iran).
 
-![Figure 1](/assets/lib/1639050354213.png){: width="700" height="400" }
+![Figure 1](/assets/img/1639050354213.png){: width="700" height="400" }
 _Figure 1: Heat map of COVID-19 cumulative confirmed cases in 8 key countries, 2020-02-23._
 
 ### Database Design
 The database files used in this project are countries-aggregated_csv.csv and key-countries-pivoted_csv.csv, downloaded from <https://datahub.io/core/covid-19>. According to the data features of these databases, table ONECOUNTRYCONFIRMED and KEYCOUNTRYCONFIRMED were created. Detailed attributes and relationships representing by the entity-relationship diagram (ERD) are shown below (Fig. 2).
 The tables in this project are satisfied amidst the first normal form (1NF), and the query efficiency is relatively high. The date entered by the user is used as the foreign key and a constraint, to participate in data querying in tables.
 
-![Figure 1](/assets/lib/1639050378830.png){: width="375" height="270" }
+![Figure 1](/assets/img/1639050378830.png){: width="375" height="270" }
 _Figure 2: ERD of databases DATE, ONECOUNTRYCONFIRMED, and KEYCOUNTRYCONFIRMED. (Cardinality constraints involved are both many-to-many relationships (M: N))_
 
 
