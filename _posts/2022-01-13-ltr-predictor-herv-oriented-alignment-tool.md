@@ -20,7 +20,29 @@ pin: false
 The human genome is rich in retroviruses and retroviral elements integrated during the evolutionary process[^f1]. Among human endogenous retroviruses (HERVs), HERV-K is the most transcriptionally active group[^f1]. It plays a vital role in embryogenesis, whereas closely related to cancer and neurodegenerative diseases[^f2][^f3][^f4].  (Grow et al., 2015, Li et al., 2015, Argaw-Denboba et al., 2017). HERVs are repeats with low complexity, making it hard to perform annotation and analysis geared to the genome[^f5]. Algorithms like cross_match and WindowMasker used to find repeats masked a large quantity of the annotated exons [^f5]. Here, we have developed a basic local alignment search tool (BLAST)-like algorithm named the LTR predictor, which can perform fast alignment of repeats while supporting custom input of reference sequences. Our test on LTR5_Hs (a type of HERV-K) shows that the LTR predictor has good accuracy and running speed, and can provide inspiration for predicting the genome coordinates of repeat such as HERV.
 The HERV consensus sequences (DF0000471, DF0000472, and DF0000558) were downloaded from Dfam database (<https://dfam.org/home>). Soft-masked reference sequences of human genome (GRCh38 Genome Reference Consortium Human Reference 38, or hg38) were from UCSC Genome browser (<https://genome.ucsc.edu/>).
 
-### Source code
+### Algorithm Implementation
+Aiming at identifying the long terminal repeated (LTR) coordinates on the reference chromosome, our algorithm allows users to one query file (query) and one reference chromosome file (ref) in FASTA format. It returns a BED file containing the start and end indexes on the reference chromosome with its name, on which the query sequence aligned (Fig. 1). The query file could be any LTR sequence from Dfam or other databases and it is recommended that the ref is in soft-masked or unmasked format, which provides the sequence information of LTR rather than masks them. The core function is based on the Smith-Waterman algorithm to achieve local alignment with dynamic programming.
+
+Our LTR finder has four major steps including seeding, hits calling, extending, and evaluation. After evaluation, statistically significant alignment results are written into a BED file with the chromosome name, start and end indexes of alignment. The overall workflow is listed step by step with a general flow chart (Fig. 1).
+
+
+![Fig1](/assets/img/Picture1.png){: width="1393" height="646" }
+_Figure 1_
+
+### Overall Workflow
+- Read in the query and ref in FASTA format and record the optional parameters;
+- Generate query and ref seeds of length 11-nucleotide and save them in a dictionary, where keys are the seed sequence and values are indexes on query and ref, respectively;
+- Read in the query and ref in FASTA format and record the optional parameters;
+- Generate query and ref seeds of length 11-nucleotide and save them in a dictionary, where keys are the seed sequence and values are indexes on query and ref, respectively;
+- Find exactly matched seeds as hits using the property of the key in the dictionary;
+- Merge overlapped and nearby hits within mismatch threshold (-m);
+- Run a gap free extension on both sides of hits using hamming distance like score methods;
+- Local alignment of sequences after gap free extension by Smith-Waterman algorithm and deliver an alignment score to each matched sequence;
+- Evaluate the E-score after local alignment to reduce the false positive rate;
+- Write the chromosome name, start and end coordinates into a BED file.
+
+
+### Source Code
 <https://github.com/Haoninghui/BMI3_Project1>
 
 ### Acknowledgements
