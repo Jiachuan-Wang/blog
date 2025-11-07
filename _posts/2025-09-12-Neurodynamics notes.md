@@ -2,7 +2,7 @@
 title: 'Study Notes on Neuronal Dynamics'
 date: 2025-09-12
 categories: [Notes, Neuroscience]
-description: My study note for Neuronal Dynamics
+description: ''
 tags: [Neuroscience]
 pin: false
 math: true
