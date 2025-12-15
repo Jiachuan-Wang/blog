@@ -12,7 +12,7 @@ This is a study note for *Neuronal Dynamics* (Gerstner *et al.*).
 
 
 
-# The passive membrane
+### The passive membrane
 
 
 
@@ -151,8 +151,7 @@ $$
 u(t)=u_{rest}+[u(t_0)-u_{rest}]e^{-\frac{t-t_0}{\tau}}+\int_{t_0}^{t}\frac{1}{C}e^{-\frac{t-t^\prime}{\tau}}I(t^\prime) dt^\prime
 $$
 
-
-# I&F Model
+### I&F Model
 
 
 
@@ -209,6 +208,89 @@ $$
 
 
 We didn't consider the adaptation, noise, and other biophysical details yet.
+
+
+
+### **Detailed ion-current based neuron models**
+
+According to Boltzmann distribution
+
+
+$$
+c \propto e^{-\frac{E}{kT}}
+$$
+
+
+and because of
+
+
+$$
+E=q\cdot u
+$$
+
+
+we have the Nernst equation
+
+
+$$
+\Delta u = u_{in} - u_{out} = -\frac{kT}{q}ln\frac{c_{in}}{c_{out}}
+$$
+
+
+The 
+$$
+\Delta u
+$$
+describes a hypothetical equilibrium given the concentration difference across the cell membrane. This hypothetical equilibrium potential, or **reversal potential**, is specific to each ion. The total equilibrium potential is a compromise among the potentials of all ions.
+
+
+$$
+E_{Na}\approx+67 mV; E_K\approx-83 mV
+$$
+
+
+#### Hodgkin-Huxley model
+
+
+
+The total current is the sum of capacity current, Na current, K current, and leak current (other channels):
+
+
+$$
+I(t)=I_c + I_{Na}+I_{K}+I_l
+$$
+
+
+
+Refer to the the previous notes...
+
+
+$$
+c \cdot\frac{du}{dt}=-I_{Na}-I_K-I_l+I(t)=-\frac{1}{R_{Na}}(u-E_{Na})-\frac{1}{R_{K}}(u-E_{K})-\frac{1}{R_{l}}(u-E_{l})+I(t)
+$$
+
+
+Considering the gating variables:
+
+
+$$
+c \cdot\frac{du}{dt}=-g_{Na}m^3h(u-E_{Na})-g_kn^4(u-E_{K})-g_l(u-E_{l})+I(t)
+$$
+
+
+For m, n, and h:
+
+
+$$
+\frac{dx}{dt}=-\frac{x-x_0(u)}{\tau(u)}
+$$
+
+
+#### Adaptation
+
+
+
+Check [M current](https://en.wikipedia.org/wiki/M_current) and [persistent sodium current](https://en.wikipedia.org/wiki/Persistent_sodium_current).
 
 
 
