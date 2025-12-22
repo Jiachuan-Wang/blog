@@ -116,7 +116,7 @@ to the input current:
 
 
 
-For a singe pulse, suppose the duration is short: 
+For a single pulse, suppose the duration is short: 
 
 
 $$
