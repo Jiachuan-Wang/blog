@@ -64,7 +64,7 @@ p <- ggplot(summary_data, aes(x = X, y = Mean, color = Parameter, group = Parame
 	) +
 	scale_color_viridis_c(option = "plasma", guide = "colorbar") +
 	scale_fill_viridis_c(option = "plasma", guide = "none") +
-	theme_minimal()+
+	theme_classic()+
 	theme(
 		text = element_text(family = "sans", color = "black"),
 		axis.text = element_text(size = 7, color = "black"),

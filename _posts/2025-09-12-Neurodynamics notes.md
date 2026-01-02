@@ -151,7 +151,7 @@ $$
 u(t)=u_{rest}+[u(t_0)-u_{rest}]e^{-\frac{t-t_0}{\tau}}+\int_{t_0}^{t}\frac{1}{C}e^{-\frac{t-t^\prime}{\tau}}I(t^\prime) dt^\prime
 $$
 
-### I&F Model
+### I&F model
 
 
 
@@ -294,3 +294,97 @@ Check [M current](https://en.wikipedia.org/wiki/M_current) and [persistent sodiu
 
 
 
+### **Synapses & dendrites**
+
+#### Synapse
+
+Synaptic current can be modeled by:
+
+
+$$
+-I^{syn}(t)=-g^{syn}(t)(u-E_{syn})
+$$
+
+
+
+And $$g(t)$$  can be modeled by exponential decay (and rise):
+
+
+$$
+g(t)=\sum_k \bar{g}_{syn} e^{-\frac{t-t_k}{\tau}} [1-e^{-\frac{t-t_k}{\tau_{rise}}}]\Theta(t-t_k)
+$$
+
+
+AMPAR and GABAAR have rapid temporal dynamics, while NMDAR and GABABR are slow.
+
+$$E_{syn}$$ for excitatory synapse is ~0 mV, and ~75 mV for inhibitory synapses. The same spike would have small effect at the inhibitory synapses at resting potential. If it’s at exactly reversal potential, the driving force will be 0 (shunting inhibition).
+
+
+
+#### STP
+
+In Dayan-Abbott model (2001), the amount of "ready-to-use" neurotransmitter is represented by $$P_{rel}$$.
+
+And the maximum synaptic conductance $$\bar{g}_{syn}=c P_{rel}$$.
+
+
+
+For depression:
+
+
+$$
+\frac{d P_{rel}}{dt}=-\frac{P_{rel}-P_0}{\tau_P}-f_D P_{rel} \sum_k \delta (t-t_k)
+$$
+
+
+For facilitation:
+
+
+$$
+\frac{d P_{rel}}{dt}=-\frac{P_{rel}-P_0}{\tau_P}-f_F (1-P_{rel}) \sum_k \delta (t-t_k)
+$$
+
+
+On the right side, the first term indicates that $$P_{rel}$$ would be back to the steady state $$P_0$$ exponentially (with a time constant $$\tau_P$$).
+
+
+
+#### Cable equation
+
+First, the current at time $$t$$, location $$x$$ can be written as:
+
+
+$$
+I(t,x)=c \frac{du(t,x)}{dt}+\sum_{ion} I_{ion}(t,x)
+$$
+
+
+Two locations between the resistor are $$x$$ and $$x+dx$$, and the $$R_L$$ is the longitudinal resistance.
+
+So, $$I$$ can also be described as external current injection plus current arriving and leaving:
+
+
+$$
+I(t,x)=I^{ext}(t,x)+I_L(t,x)-L(t,x+dx)= I^{ext}(t,x)+\frac{u(t,x-dx)-2u(t,x)+u(t,x+dx)}{R_L}
+$$
+
+
+If we downscale the $dx$:
+
+
+$$
+R_L=r_L dx, C=c dx, I_{ion}=i_{ion} dx, I^{ext}=i^{ext} dx
+$$
+
+
+We get the cable equation (by combining the two expressions regarding $$I(t,x)$$):
+
+
+$$
+\frac{d^2u(t,x)}{d^2x}=c r_L \frac{d u(t,x)}{dt} + r_L \sum_{ion} i_{ion} (t,x) - r_L i^{ext}(t,x)
+$$
+
+
+
+
+ 
