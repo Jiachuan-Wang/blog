@@ -12,7 +12,7 @@ This is a study note for *Neuronal Dynamics* (Gerstner *et al.*).
 
 
 
-### The passive membrane
+### **The passive membrane**
 
 
 
@@ -151,7 +151,7 @@ $$
 u(t)=u_{rest}+[u(t_0)-u_{rest}]e^{-\frac{t-t_0}{\tau}}+\int_{t_0}^{t}\frac{1}{C}e^{-\frac{t-t^\prime}{\tau}}I(t^\prime) dt^\prime
 $$
 
-### I&F model
+### **I&F model**
 
 
 
@@ -387,4 +387,87 @@ $$
 
 
 
+
+### **Two-dimensional models and phase plane analysis**
+
+#### Reduce the 4D HH model to 2D
+
+Assumption: dendrites are approximated as passive (leak only), which leads to a point neuron.
+
+Tricks:
+
+- Separation of time scales. Dynamics of m is fast, so $$m(t)=m_0(u(t)))$$
+
+Why? For coupled differential equations
+
+
+$$
+\begin{cases} 
+
+   \tau_1\frac{dx}{dt}=-x+h(y) \\
+
+   \tau_2\frac{dy}{dt}=f(y)+g(x)
+
+  \end{cases}
+$$
+
+
+If $$\tau_1\ll\tau_2$$, x will approach the value of h(y) exponentially, so $$x=h(y)$$
+
+Then $$\tau_2\frac{dy}{dt}=f(y)+g(h(y))$$
+
+Also note that “dynamics of m is fast” means comparing with the dynamics of n, h, and I(t).
+
+- Dynamics of h and n are similar, so $$1-h(t)=an(t)=w(t)$$
+
+Now HH model is reduced to 
+
+$$
+
+c\frac{du}{dt}=-g_{Na}m^3_0(u)(1-w)(u-E_{Na})-g_K[\frac{w}{a}]^4(u-E_K)-g_l(n-E_l)+I(t)
+
+$$
+
  
+
+$$
+
+\frac{dw}{dt}=-\frac{w-w_0(u)}{\tau_{eff}(u)}
+
+$$
+
+ 
+
+So it’s a 2D system:
+
+ 
+
+$$
+
+\begin{cases} 
+
+   c\frac{du}{dt}=f(u(t),w(t))+I(t) \\
+
+   \frac{dw}{dt}=g(u(t),w(t))
+
+  \end{cases}
+
+$$
+
+
+
+The notes regarding phase plane analysis are omitted, as I don't want to plot the figures.
+
+
+
+#### Further reduction to 1D
+
+For $$\tau_u \ll\tau_w$$, the flux is nearly horizontal on the w-u phase plane.
+
+ 
+
+So $$\tau_w \frac{dw}{dt}\approx 0$$, which means $$w\approx w_{rest}$$ when not spiking.
+
+ 
+
+Then $$\tau \frac{du}{dt}=F(u,w_{rest})+RI(t)=F(u)+RI(t)$$, which is the nonlinear I&F model (see previous notes).
