@@ -423,17 +423,13 @@ Also note that “dynamics of m is fast” means comparing with the dynamics of 
 Now HH model is reduced to 
 
 $$
-
 c\frac{du}{dt}=-g_{Na}m^3_0(u)(1-w)(u-E_{Na})-g_K[\frac{w}{a}]^4(u-E_K)-g_l(n-E_l)+I(t)
-
 $$
 
  
 
 $$
-
 \frac{dw}{dt}=-\frac{w-w_0(u)}{\tau_{eff}(u)}
-
 $$
 
  
@@ -443,7 +439,6 @@ So it’s a 2D system:
  
 
 $$
-
 \begin{cases} 
 
    c\frac{du}{dt}=f(u(t),w(t))+I(t) \\
@@ -451,7 +446,6 @@ $$
    \frac{dw}{dt}=g(u(t),w(t))
 
   \end{cases}
-
 $$
 
 
@@ -471,3 +465,50 @@ So $$\tau_w \frac{dw}{dt}\approx 0$$, which means $$w\approx w_{rest}$$ when not
  
 
 Then $$\tau \frac{du}{dt}=F(u,w_{rest})+RI(t)=F(u)+RI(t)$$, which is the nonlinear I&F model (see previous notes).
+
+
+
+### **Variability of spike trains**
+
+#### Source of variability
+
+1. Intrinsic noise from ion channels.
+2. Network noise from other neurons.
+
+*In vitro* single-neuron recordings using fluctuating current stimulation showed reliable spike timing (Mainen and Sejnowski, 1995), indicating that the variability largely arises from network noise. (I don't quite understand, especially why step current stimulation failed to produce reliable timing.)
+
+The variability can be described by the distribution of interspike interval (ISI), which accounts for the regularity.
+
+
+
+#### Definitions of firing rate/rate codes
+
+1. Temporal average: $$v(t)=\frac{n^{sp}}{T}$$. Examine the distribution of ISI (regularity of spike train), or the Fano factor (repeatability across trials).
+2. Average across repetitions: count the spike numbers in a very short time window. Examine the **peristimulus time histogram** $$PSTH(t)=\frac{n(t;t+\Delta t)}{K\Delta t}$$.
+3. Population averaging: population activity $$A(t)=\frac{n(t;t+\Delta t)}{N\Delta t}$$.
+
+Seems the population activity is the one used by animals.
+
+
+
+#### Homogeneous Poisson model
+
+Assumes neuron fires at a **constant rate** $$\rho_0$$ during time $$T$$.
+
+Probability of finding a spike in $$\Delta t$$: $P_F = \rho_0 \Delta t$.
+
+Survivor function, describing ISI: $$S(t)=e^{-\rho_0 t}; S(0)=1$$. This is in continuous time steps. In discrete time steps:  $$S(t)=(1-\rho_0 \Delta t)^{\frac{t}{\Delta t}}$$.
+
+
+
+#### Inhomogeneous Poisson model
+
+Probability of firing: $P_F = \rho(t) \Delta t$.
+
+Survivor function (estimate the probability of survival at time $$t$$ given a spike at time $$\hat{t}$$): 
+$$
+S(t\vert\hat{t})=e^{-\int_{\hat{t}}^t \rho(t^\prime) dt^\prime}
+$$
+.
+
+Interval distribution: $$P(t\vert\hat{t})=\rho(t) S(t\vert \hat{t})$$.
