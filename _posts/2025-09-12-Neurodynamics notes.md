@@ -475,7 +475,7 @@ Then $$\tau \frac{du}{dt}=F(u,w_{rest})+RI(t)=F(u)+RI(t)$$, which is the nonline
 1. Intrinsic noise from ion channels.
 2. Network noise from other neurons.
 
-*In vitro* single-neuron recordings using fluctuating current stimulation showed reliable spike timing (Mainen and Sejnowski, 1995), indicating that the variability largely arises from network noise. (I don't quite understand, especially why step current stimulation failed to produce reliable timing.)
+*In vitro* single-neuron recordings using **fluctuating current stimulation showed reliable spike timing** (Mainen and Sejnowski, 1995), indicating that the variability largely arises from network noise.
 
 The variability can be described by the distribution of interspike interval (ISI), which accounts for the regularity.
 
@@ -512,3 +512,34 @@ $$
 .
 
 Interval distribution: $$P(t\vert\hat{t})=\rho(t) S(t\vert \hat{t})$$.
+
+
+
+#### Stochastic spike arrival
+
+The total spike train of $$K$$ presynaptic neurons $$S(t)=\sum_{k=1}^{K} \sum_f \delta (t-t_k^f)$$.
+
+The expectation at each moment of time is the rate $$\langle S(t) \rangle = K \rho_0$$.
+
+
+
+The synaptic current $$I(t)$$ sums up $$K$$ neurons and firing time f. 
+
+$$\mu = \langle I(t) \rangle=\langle \frac{1}{R}\sum_k w_k  \sum_f \alpha (t-t_k^f)\rangle=\frac{1}{R} \sum_k w_k \int \alpha(s) \langle   \sum_f  \delta (t-t_k^f-s) ds\rangle = \frac{1}{R} \sum_k w_k \int \alpha(s) ds \rho_0 $$
+
+
+
+##### Fluctuation of potential 
+
+As $$\langle x(t) \rangle=\int f(s) ds \rho_0$$,
+
+Autocorrelation $$\langle x(t) \hat{x}(t)\rangle = \int dt^\prime \int dt^{\prime\prime} f(t-t^\prime) f(t-t^{\prime\prime}) \langle S(t^\prime)S(t^{\prime\prime})\rangle$$
+
+
+
+Probability of spike in step $$n$$ and $$k$$:
+
+For $$n \neq k$$, $$P(n,k)=P_F P_F = \rho_0^2 (\Delta t)^2$$; For $$n=k$$, $$P(n,n)=P_F=\rho_0 \Delta t$$.
+
+Taking $$\Delta t \rightarrow 0$$, autocorrelation in continuous time steps is $$\langle S(t)S(t^{\prime})\rangle=\rho_0 \delta(t-t^\prime)+\rho_0^2$$. (by dividing $$\Delta t$$ in the discrete autocorrelation. The diagonal contribution ($$n=k$$) becomes infinitely sharp and turns into a Dirac delta.)
+
