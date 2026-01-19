@@ -543,3 +543,47 @@ For $$n \neq k$$, $$P(n,k)=P_F P_F = \rho_0^2 (\Delta t)^2$$; For $$n=k$$, $$P(n
 
 Taking $$\Delta t \rightarrow 0$$, autocorrelation in continuous time steps is $$\langle S(t)S(t^{\prime})\rangle=\rho_0 \delta(t-t^\prime)+\rho_0^2$$. (by dividing $$\Delta t$$ in the discrete autocorrelation. The diagonal contribution ($$n=k$$) becomes infinitely sharp and turns into a Dirac delta.)
 
+
+
+### **Noise models**
+
+1. Diffusive noise.
+2. Escape noise (can estimate time-dependent interval distribution)
+
+Escape rate (stochastic intensity of point process) $$\rho(t)=f(u(t)-\theta)$$
+
+$$f(u-\theta)$$ can be $$\frac{1}{\Delta}e^{\frac{u-\theta}{\Delta}}$$ or $$ReLU(\rho_0[\frac{u}{\theta}-1])$$.
+
+<br>
+
+Survivor function (probability to survive w/o firing again up to time $$t$$) has $$\frac{d}{dt}S_I(t\vert \hat{t})=-\rho(t)S_I(t\vert \hat{t})$$, where $$\hat{t}$$ is the last firing time.
+
+So $$S_I(t\vert \hat{t})=e^{-\int_\hat{t}^t \rho(t^\prime)dt^\prime}$$.
+
+And the ISI $$P(t\vert \hat{t})=\rho(t)S(t\vert \hat{t})$$.
+
+<br>
+
+In discrete time, the probability to survive 1 time step $$S(t_{k+1} \vert t_{k})=e^{-\rho(t_k)\Delta}$$,
+
+and the probability to fire in 1 time step $$P_k^F=1-S(t_{k+1} \vert t_{k})$$.
+
+<br>
+
+The Likelihood of a spike train $$L(t^1,...,t^N)=e^{-\int_0^T \rho(t^\prime dt^\prime)}\prod_{f=1}^N \rho(t^f)$$
+
+Can be transformed into log-likelihood.
+
+
+
+#### Rate codes vs. temporal codes
+
+* Rate codes
+  * Population rate
+* Temporal codes
+  * Time to first spike (after input)
+  * phase (wrt oscillation) of spike 
+  * stochastic resonance
+
+
+
