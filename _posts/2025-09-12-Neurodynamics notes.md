@@ -570,7 +570,7 @@ and the probability to fire in 1 time step $$P_k^F=1-S(t_{k+1} \vert t_{k})$$.
 
 <br>
 
-The Likelihood of a spike train $$L(t^1,...,t^N)=e^{-\int_0^T \rho(t^\prime dt^\prime)}\prod_{f=1}^N \rho(t^f)$$
+The Likelihood of a spike train $$L(t^1,...,t^N)=e^{-\int_0^T \rho(t^\prime) dt^\prime}\prod_{f=1}^N \rho(t^f)$$
 
 Can be transformed into log-likelihood.
 
@@ -584,6 +584,56 @@ Can be transformed into log-likelihood.
   * Time to first spike (after input)
   * phase (wrt oscillation) of spike 
   * stochastic resonance
+
+
+
+
+
+### **Modern phenomenological neuron models**
+
+#### Add adaptation to EIF
+
+$$\tau \frac{du}{dt}=-(u-u_{rest})+\Delta e^{\frac{u-\vartheta}{\Delta}}-R\sum_k w_k +RI(t)$$
+
+where the dynamics of $$w_k$$ is $$\tau_k \frac{dw_k}{dt}=a_k(u-u_{rest})-w_k+b_k\tau_k\sum_f \delta(t-t^f)$$.
+
+The $$a_k$$ is the coupling parameter. The last term means after each spike, $$w_k$$ jumps by an amount $$b_k$$.
+
+So after a spike, we do this jump and reset.
+
+
+
+#### Add dynamical threshold to EIF
+
+The threshold increases after each spike:
+
+$$\vartheta =\theta_0+\sum_f \theta_1(t-t^f)$$
+
+
+
+#### Adaptive LIF & SRM
+
+The two linear equations ($$u$$ and $$w$$ dynamics) can be integrated:
+
+
+$$
+u(t)=\sum_f \eta (t-t^f)+\int_0^{\infty}ds\kappa(s)I(t-s)+u_{rest}
+$$
+
+
+and still there are dynamical threshold and reset event.
+
+
+
+The terms in the equation above can be rewritten as
+
+
+$$
+\int \eta(s) \sum_f \delta(t-t^f-s)ds = \int_0^\infty \eta(s)S(t-s)ds
+$$
+where $$S(t)$$ is the spike train.
+
+Linear filters are applied for input, threshold, and refractoriness.
 
 
 
