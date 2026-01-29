@@ -637,3 +637,56 @@ Linear filters are applied for input, threshold, and refractoriness.
 
 
 
+### **Neuronal populations**
+
+One population means neurons in one layer of one column.
+
+#### Mean-field argument
+
+Assume a **fully connected** homogeneous network (all neurons and synapses are the same; each neuron receives the same external input).
+
+
+$$
+I_i^{syn}(t)=\sum_f \sum_k w_{ik}\alpha(t-t_k^f)=\sum_f \sum_k w_{ik}\int\alpha(s)\delta(t-t_k^f-s)ds=w_0\int \alpha(s)A(t-s)ds
+$$
+
+
+where $$w_{ik}=\frac{w_0}{N}$$.
+
+
+
+Interpretation: all neurons receive the same total input current.
+
+
+
+#### Stationary mean-field and asynchronous state
+
+At the stationary state, for a fully connected homogeneous network with constant input:
+
+1. Input is constant and identical for all neurons.
+   $$
+   I_0=w_0 \int \alpha(s)dsA_0+I_0^{ext}
+   $$
+
+2. Frequency (single-neuron gain function):
+   $$
+   v=g(I_0)
+   $$
+
+3. Single neuron rate = population rate:
+   $$
+   v=A_0
+   $$
+
+
+
+In a stationary state of asynchronous firing, solutions might be found in the $$I_0 - A_0$$ plane by combining the three equations.
+
+
+
+#### Random networks
+
+In a homogeneous network with random connectivity (with a connection probability $$p$$ or fixed number of inputs $$K$$), the equations above hold.
+
+
+
