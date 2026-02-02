@@ -4,7 +4,7 @@ date: 2025-09-12
 categories: [Notes, Neuroscience]
 description: ''
 tags: [Neuroscience]
-pin: false
+pin: true
 math: true
 ---
 
@@ -687,6 +687,12 @@ In a stationary state of asynchronous firing, solutions might be found in the $$
 #### Random networks
 
 In a homogeneous network with random connectivity (with a connection probability $$p$$ or fixed number of inputs $$K$$), the equations above hold.
+
+
+
+### **Fokker-Planck equation for stochastic integrate-and-fire neurons**
+
+I'm unsure how to apply this knowledge. But can check the Brunel network (2000) for E-I network and dynamical regimes.
 
 
 
