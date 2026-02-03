@@ -696,3 +696,34 @@ I'm unsure how to apply this knowledge. But can check the Brunel network (2000) 
 
 
 
+### **Associative memory** 
+
+In anti-ferromagnet, the state of elementary magnet $$S_i$$ can be +1 or -1, and the interaction $$w_{ij}$$ can be +1 (if $$S_i = S_j$$) or -1 (if $$S_i \neq S_j$$). The dynamics is 
+
+
+$$
+S_i(t+1)=sgn[\sum_j w_{ij}S_j(t)]
+$$
+
+
+To store a single pattern, the interaction can be described by the states in the prototype:
+
+
+$$
+w_{ij}=p_ip_j
+$$
+ 
+
+For multiple prototypes, you just need to sum over all prototypes (or take the average).
+
+
+
+A minimal condition is that the pattern should stay if we start from a prototype.
+
+
+$$
+S_i(t+1)=p_i^v sgn[1+\frac{1}{N}\sum_{\mu=1,\mu\neq v}^M \sum_{j=1}^N p_i^\mu p_i^v p_j^\mu p_j^v]=p_i^v sgn[1-a_i^v]
+$$
+
+
+$$a_i^v$$ is a random walk process with a mean of 0 and a SD of $$\sqrt{\frac{M-1}{N}}$$.
