@@ -712,7 +712,7 @@ To store a single pattern, the interaction can be described by the states in the
 $$
 w_{ij}=p_ip_j
 $$
- 
+
 
 For multiple prototypes, you just need to sum over all prototypes (or take the average).
 
@@ -725,5 +725,48 @@ $$
 S_i(t+1)=p_i^v sgn[1+\frac{1}{N}\sum_{\mu=1,\mu\neq v}^M \sum_{j=1}^N p_i^\mu p_i^v p_j^\mu p_j^v]=p_i^v sgn[1-a_i^v]
 $$
 
-
 $$a_i^v$$ is a random walk process with a mean of 0 and a SD of $$\sqrt{\frac{M-1}{N}}$$.
+
+
+
+#### Stochastic Hopfield network
+
+
+
+The interaction is defined by
+
+
+$$
+w_{ij}=\frac{1}{N}\sum_{\mu=1}^M p_i^\mu p_j^\mu
+$$
+
+
+And the dynamics is defined by
+
+
+$$
+Pr \{ S_i(t+1)=+1 \vert h_i \}=g[h_i]=g[\sum_{j=1}^N w_{ij}S_j(t)]
+$$
+
+
+
+
+#### Energy function
+
+
+
+Assume symmetric interaction and deterministic asynchronous update, the energy decreases if neuron $$k$$ changes.
+
+
+
+#### Realistic networks
+
+
+
+Hopfield networks can be applied to
+
+1. Low mean activity.
+2. Asymmetric interactions.
+3. Separation of E/I.
+4. Low probability of connections.
+
