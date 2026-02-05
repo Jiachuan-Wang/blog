@@ -621,12 +621,8 @@ u(t)=\sum_f \eta (t-t^f)+\int_0^{\infty}ds\kappa(s)I(t-s)+u_{rest}
 $$
 
 
-and still there are dynamical threshold and reset event.
 
-
-
-The terms in the equation above can be rewritten as
-
+The first term in the equation above can be rewritten as
 
 $$
 \int \eta(s) \sum_f \delta(t-t^f-s)ds = \int_0^\infty \eta(s)S(t-s)ds
@@ -769,4 +765,41 @@ Hopfield networks can be applied to
 2. Asymmetric interactions.
 3. Separation of E/I.
 4. Low probability of connections.
+
+
+
+### **Continuum models**
+
+#### Transients
+
+In the high noise regime,
+
+population activity $$A(t)=F(h(t))$$ (slow transient)
+
+and the membrane potential caused by input has
+$$
+\tau \frac{d}{dt}h(t)=-h(t)+RI(t)=-h(t)+R(I^{ext}(t)+J_0qF(h(t)))=-h(t)+RI^{ext}(t)+\gamma F(h(t))
+$$
+
+
+In the low noise regime, transients are sharp and have oscillations.
+
+
+
+#### Field equation
+
+$$
+\tau \frac{d}{dt}h(x,t)=-h(x,t)+RI^{ext}(x,t)+d\int w(x-x^\prime)F(h(x^\prime,t))dx
+$$
+
+
+
+where $$d$$ is the density of neurons, and $$x-x^\prime$$ can be expressed as distance.
+
+
+
+Solutions for the ring model:
+
+1. Homogeneous solution in input driven regime (weak lateral connectivity).
+2. Bump attractor regime (strong lateral connectivity).
 
