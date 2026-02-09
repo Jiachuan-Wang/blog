@@ -803,3 +803,97 @@ Solutions for the ring model:
 1. Homogeneous solution in input driven regime (weak lateral connectivity).
 2. Bump attractor regime (strong lateral connectivity).
 
+
+
+### **Synaptic plasticity and learning** 
+
+#### Bienenstock-Cooper-Munro rule
+
+It's a smoothed version of pre-synaptically gated Hebb's rule.
+
+
+$$
+\frac{d}{dt}w_{ij}=bv_i^{post}(v_i^{post}-\vartheta)v_j^{pre}
+$$
+
+
+where $$\vartheta=f(\bar{v}_i^{post})$$.
+
+
+
+#### STDP
+
+For single pairs,
+
+traces are updated using
+
+
+
+
+$$
+\tau_+\frac{d}{dt}z_j^+=-z_j^++\delta(t-t_j^{pre})
+$$
+
+$$
+\tau_-\frac{d}{dt}z_i^-=-z_i^-+\delta(t-t_i^{post})
+$$
+
+
+and
+
+
+$$
+\frac{d}{dt}w_{ij}=aw_{ij}z_j^+\delta(t-t_i^{post})-bw_{ij}z_i^-\delta(t-t_j^{pre})
+$$
+
+
+
+
+It's easy to adapt to multiple pairs.
+
+
+
+#### Triplet STDP model
+
+$$
+\frac{d}{dt}w_{ij}=A^+z_j^+z_i^{slow}\delta(t-t_i^{post})-Bz_i^-\delta(t-t_j^{pre})
+$$
+
+In the first term, pre-synaptic information is the trace, and post-synaptic information is the current spike and slow spike trace.
+
+In the second term, pre-synaptic information is the spike, and post-synaptic information is the trace.
+
+
+
+Assume Poisson firing, this is equivalent to the BCM model:
+
+
+$$
+\frac{d}{dt}w_{ij}=\beta A^+ (v_i^{post})^2v_j^{pre}-\alpha B v_i^{post}v_j^{pre}
+$$
+
+
+
+
+#### Zenke model
+
+The terms in the learning rule can be classified as
+
+1. Homosynaptic/Hebb, if it contains pre- and post- terms.
+2. Heterosynaptic plasticity, if it's a pure post- term.
+3. Transmitter-induced, if it's a pure pre- term.
+
+
+
+The plasticity rule here is
+
+
+$$
+\frac{d}{dt}w_{ij}=a_1^{pre}v_j^{pre}-a_2^{LTD}v_j^{pre}v_i^{post}+a_3^{BCM}v_j^{pre}(v_i^{post})^2-a_4^{het}(w_{ij}-z_{ij})[v_i^{post}]^4
+$$
+
+
+The fourth-order term cause the post activity-$$\frac{dw}{dt}$$ curve to bend downwards when the post activity is high, thus stabilize the system.
+
+
+
