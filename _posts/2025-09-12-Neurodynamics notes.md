@@ -777,9 +777,12 @@ In the high noise regime,
 population activity $$A(t)=F(h(t))$$ (slow transient)
 
 and the membrane potential caused by input has
+
+
 $$
 \tau \frac{d}{dt}h(t)=-h(t)+RI(t)=-h(t)+R(I^{ext}(t)+J_0qF(h(t)))=-h(t)+RI^{ext}(t)+\gamma F(h(t))
 $$
+
 
 
 In the low noise regime, transients are sharp and have oscillations.
